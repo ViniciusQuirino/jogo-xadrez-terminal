@@ -44,6 +44,18 @@
             p.posicao = pos;
         }
 
+        public Peca retirarPeca(Posicao pos)
+        {
+            if (peca(pos) == null)
+            {
+                return null;
+            }
+            Peca aux = peca(pos); //recebe a peça 
+            aux.posicao = null; //propriedade da peça posição recebe nullo após ser retirada
+            pecas[pos.linha, pos.coluna] = null; //a peça tambem recebe nullo
+            return aux; //retorna exatamente a éça
+        }
+
         public bool posicaoValida(Posicao pos)
         {
             if (pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas)
