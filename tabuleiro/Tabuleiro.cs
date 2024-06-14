@@ -5,7 +5,7 @@
 
         public int linhas { get; set; }
         public int colunas { get; set; }
-        private Peca[,] pecas; //só a própria classe pode alterar
+        public Peca[,] pecas; //só a própria classe pode alterar
 
         public Tabuleiro(int linhas, int colunas)
         {
@@ -27,11 +27,11 @@
         public bool existePeca(Posicao pos)
         {
             validarPosicao(pos);
-            if (peca(pos) != null)
+            if (peca(pos) == null)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         public void colocarPeca(Peca p, Posicao pos)

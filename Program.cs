@@ -1,14 +1,14 @@
 ﻿using System;
-using jogo_xadrez_terminal;
 using tabuleiro;
 using xadrez;
 
-namespace MyApp
+namespace xadrez_console
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
+
             try
             {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
@@ -20,9 +20,15 @@ namespace MyApp
                     Tela.imprimirTabuleiro(partida.tab);
 
                     Console.WriteLine();
-                    Console.WriteLine();
                     Console.Write("Origem: ");
                     Posicao origem = Tela.lerPosicaoXadrez().ToPosicao();
+
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+
+                    Console.WriteLine();
                     Console.Write("Destino: ");
                     Posicao destino = Tela.lerPosicaoXadrez().ToPosicao();
 
